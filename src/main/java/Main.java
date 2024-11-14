@@ -1,4 +1,5 @@
 import exception.InvalidPlateauInputException;
+import exception.InvalidRoverInputException;
 
 import java.util.Scanner;
 
@@ -11,6 +12,7 @@ public class Main {
 
         MarsRoverProgram program = new MarsRoverProgram();
 
+        //
         int plateauPosX = -1;
         int plateauPosY = -1;
 
@@ -23,7 +25,7 @@ public class Main {
                 String inputPosX = scanner.nextLine();
                 int posX = Integer.parseInt(inputPosX);
 
-                if (posX <= 0) {
+                if (posX < 0) {
                     throw new InvalidPlateauInputException("Position should be greater than 0");
                 }
 
@@ -33,7 +35,7 @@ public class Main {
                 String inputPosY = scanner.nextLine();
                 int posY = Integer.parseInt(inputPosY);
 
-                if (posY <= 0) {
+                if (posY < 0) {
                     throw new InvalidPlateauInputException("Position should be greater than 0");
                 }
 
@@ -48,6 +50,33 @@ public class Main {
             }
         } while (plateauPosX != -1);
 
+
+        //
+        int numOfRover = -1;
+
+        do {
+            try {
+                // Ask user to enter number of Rover
+                System.out.println("Please enter the number of Rover: ");
+
+                String inputNumOfRover = scanner.nextLine();
+                int numOfRoverInt = Integer.parseInt(inputNumOfRover);
+
+                if (numOfRoverInt < 0) {
+                    throw new InvalidPlateauInputException("Position should be greater than 0");
+                }
+
+                numOfRover = numOfRoverInt;
+
+            } catch (NumberFormatException e) {
+                System.err.println("Input should be a number and greater than 0.");
+            } catch (InvalidRoverInputException e) {
+                System.err.println("Incorrect input: " + e.getMessage());
+            }
+        } while (numOfRover != -1);
+
+        //
+        program.init(plateauPosX, plateauPosY, numOfRover);
 
         System.out.println("Program End");
     }
