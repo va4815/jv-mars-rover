@@ -174,7 +174,7 @@ public class RoverTest {
         rover.move(-1);
 
         assertEquals(1, rover.getPosition().getX());
-        assertEquals(3, rover.getPosition().getY());
+        assertEquals(1, rover.getPosition().getY());
     }
 
     @Test
@@ -206,8 +206,8 @@ public class RoverTest {
 
         rover.move(-1);
 
-        assertEquals(1, rover.getPosition().getX());
-        assertEquals(3, rover.getPosition().getY());
+        assertEquals(2, rover.getPosition().getX());
+        assertEquals(2, rover.getPosition().getY());
     }
 
 }

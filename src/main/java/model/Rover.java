@@ -28,6 +28,19 @@ public class Rover implements Movable, Rotatable {
 
     @Override
     public void move(int step) {
+        int posX = position.getX();
+        int posY = position.getY();
+        Direction direction = position.getFacing();
+
+        switch (direction) {
+            case N -> posY = Math.max(0, posY + step);
+            case E -> posX = Math.max(0, posX + step);
+            case S -> posY = Math.max(0, posY - step);
+            case W -> posX = Math.max(0, posX - step);
+        }
+
+        position.setX(posX);
+        position.setY(posY);
 
     }
 
