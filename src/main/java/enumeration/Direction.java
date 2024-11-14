@@ -1,6 +1,6 @@
 package enumeration;
 
-public enum CompassDirection {
+public enum Direction {
     N,
     E,
     S,

@@ -1,11 +1,11 @@
 package model;
 
-import enumeration.CompassDirection;
+import enumeration.Direction;
 
 public class Position {
     private int x;
     private int y;
-    private CompassDirection facing;
+    private Direction facing;
 
     public int getX() {
         return x;
@@ -15,7 +15,7 @@ public class Position {
         return y;
     }
 
-    public CompassDirection getFacing() {
+    public Direction getFacing() {
         return facing;
     }
 }

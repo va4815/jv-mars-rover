@@ -1,6 +1,8 @@
 package model;
 
-public class Rover {
+import enumeration.RotateInstruction;
+
+public class Rover implements Movable, Rotatable {
     private String name;
     private Position position;
 
@@ -14,6 +16,16 @@ public class Rover {
 
     public Position getPosition() {
         return position;
+    }
+
+    @Override
+    public void move() {
+
+    }
+
+    @Override
+    public void rotate(RotateInstruction instruction) {
+
     }
 
     @Override
