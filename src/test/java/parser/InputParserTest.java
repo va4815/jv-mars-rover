@@ -16,8 +16,8 @@ class InputParserTest {
         Plateau expected = new Plateau(5, 5);
         Plateau actual = InputParser.parsePlateauSize("5 5");
 
-        assertEquals(expected.getPositionX(), actual.getPositionX());
-        assertEquals(expected.getPositionX(), actual.getPositionY());
+        assertEquals(expected.getWidth(), actual.getWidth());
+        assertEquals(expected.getHeight(), actual.getHeight());
 
     }
 

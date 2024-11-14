@@ -3,11 +3,18 @@ package model;
 import enumeration.RotateInstruction;
 
 public class Rover implements Movable, Rotatable {
+    private int id;
     private String name;
     private Position position;
 
-    public Rover(String name) {
+    public Rover(int id, String name, Position position) {
+        this.id = id;
         this.name = name;
+        this.position = position;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -30,7 +37,9 @@ public class Rover implements Movable, Rotatable {
 
     @Override
     public String toString() {
-        return "Rover " + name + " is at the position ("
+        return "Rover " + name + " ("
+                + id
+                + ") is at the position ("
                 + position.getX() + ", "
                 + position.getY() + " "
                 + position.getFacing() + " )";

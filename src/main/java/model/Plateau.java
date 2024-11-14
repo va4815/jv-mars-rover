@@ -1,20 +1,30 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Plateau {
-    private final int positionX;
-    private final int positionY;
+    private final int width;
+    private final int height;
+    private Map<Integer, Position> roverPositions;
 
-    public Plateau(int positionX, int positionY) {
-        this.positionX = positionX;
-        this.positionY = positionY;
+    public Plateau(int width, int height) {
+        this.width = width;
+        this.height = height;
+        this.roverPositions = new HashMap<>();
     }
 
-    public int getPositionX() {
-        return positionX;
+    public int getWidth() {
+        return width;
     }
 
-    public int getPositionY() {
-        return positionY;
+    public int getHeight() {
+        return height;
     }
 
+    public Map<Integer, Position> getRoverPositions() {
+        return roverPositions;
+    }
 }
