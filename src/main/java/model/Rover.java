@@ -26,7 +26,7 @@ public class Rover implements Movable, Rotatable {
     }
 
     @Override
-    public void move() {
+    public void move(int step) {
 
     }
 
