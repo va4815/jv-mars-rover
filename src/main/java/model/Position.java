@@ -21,6 +21,10 @@ public class Position {
         return y;
     }
 
+    public void setFacing(Direction facing) {
+        this.facing = facing;
+    }
+
     public Direction getFacing() {
         return facing;
     }

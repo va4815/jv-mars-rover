@@ -1,5 +1,6 @@
 package model;
 
+import enumeration.Direction;
 import enumeration.RotateInstruction;
 
 public class Rover implements Movable, Rotatable {
@@ -32,6 +33,28 @@ public class Rover implements Movable, Rotatable {
 
     @Override
     public void rotate(RotateInstruction instruction) {
+        Direction roverDirection = position.getFacing();
+        Direction newDirection = null;
+
+        switch (instruction) {
+            case Left -> {
+                switch (roverDirection) {
+                    case N -> newDirection = Direction.W;
+                    case E -> newDirection = Direction.N;
+                    case S -> newDirection = Direction.E;
+                    case W -> newDirection = Direction.S;
+                }
+            }
+            case Right -> {
+                switch (roverDirection) {
+                    case N -> newDirection = Direction.E;
+                    case E -> newDirection = Direction.S;
+                    case S -> newDirection = Direction.W;
+                    case W -> newDirection = Direction.N;
+                }
+            }
+        }
+        position.setFacing(newDirection);
 
     }
 
