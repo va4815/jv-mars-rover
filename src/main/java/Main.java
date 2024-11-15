@@ -1,39 +1,25 @@
+import enumeration.Instruction;
 import exception.InvalidInputException;
 import model.*;
 import parser.InputParser;
+import parser.InstructionParser;
 
 public class Main {
 
     public static void main(String[] args) {
         System.out.println("Wellcome to the Mars Rover!!");
 
-
+        MissionControl missionControl = new MissionControl();
 
         // Input: Plateau Size
         String inputPlateauSize = "5 5";
-        PlateauSize plateauSize = InputParser.parsePlateauSize(inputPlateauSize);
-
-        if (plateauSize == null) {
-            throw new InvalidInputException("Incorrect input format of plateau size");
-        }
-
-        Plateau plateau = new Plateau(plateauSize);
-        MissionControl missionControl = new MissionControl(plateauSize);
+        Plateau plateau = missionControl.setupPlateau(inputPlateauSize);
 
         // Input: Landing position
         String inputRoverPosition = "1 2 N";
-        Position position = InputParser.parseRoverLandingPosition(inputRoverPosition);
-
-        if (position == null) {
-            throw new InvalidInputException("Incorrect input format of Rover position");
-        }
-
-        Rover rover = new Rover(1, "Rover 1", position);
-
+        Rover rover = missionControl.setupRover(inputRoverPosition);
 
         // Input: Rover Instruction
-
-
 
 
         System.out.println("Program End");
