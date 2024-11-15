@@ -36,4 +36,13 @@ public class Position {
     public Direction getFacing() {
         return facing;
     }
+
+    @Override
+    public String toString() {
+        return "Position{" +
+                "x=" + x +
+                ", y=" + y +
+                ", facing=" + facing +
+                '}';
+    }
 }

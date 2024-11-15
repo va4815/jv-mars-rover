@@ -1,7 +1,6 @@
 package parser;
 
-import exception.InvalidInputException;
-import model.Plateau;
+import enumeration.Direction;
 import model.PlateauSize;
 import model.Position;
 
@@ -35,11 +34,28 @@ public class InputParser {
     }
 
     public static Position parseRoverLandingPosition(String input) {
-        // TODO: convert input to a Position class
-        //  example: "1 2 N"
-        //  x position: 1, y position: 2, direction: N
+        Position output = null;
 
-        return null;
+        if (input == null) {
+            return output;
+        }
+
+        String regex = "^[0-9] [0-9] [NESW]$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+
+        if (!matcher.matches()) {
+            return output;
+        }
+
+        String[] split = input.split(" ");
+        int x = Integer.parseInt(split[0]);
+        int y = Integer.parseInt(split[1]);
+        Direction facing = Direction.valueOf(split[2]);
+
+        output = new Position(x, y, facing);
+
+        return output;
     }
 
 }

@@ -1,13 +1,10 @@
 package parser;
 
 import enumeration.Direction;
-import exception.InvalidInputException;
-import model.Plateau;
 import model.PlateauSize;
 import model.Position;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InputParserTest {
@@ -42,22 +39,47 @@ class InputParserTest {
     void testParseRoverLandingPosition_normalInput() {
         Position expected = new Position(1, 2, Direction.N);
         Position actual = InputParser.parseRoverLandingPosition("1 2 N");
-        assertEquals(expected, actual);
+
+        assertEquals(expected.toString(), actual.toString());
     }
 
     @Test
     void testParseRoverLandingPosition_nullInput() {
         assertEquals(
-                new InvalidInputException("Incorrect input format"),
+                null,
                 InputParser.parseRoverLandingPosition(null)
         );
     }
 
     @Test
-    void testParseRoverLandingPosition_invalidInput() {
+    void testParseRoverLandingPosition_invalidInputFormat() {
         assertEquals(
-                new InvalidInputException("Incorrect input format"),
+                null,
                 InputParser.parseRoverLandingPosition("5qd")
+        );
+    }
+
+    @Test
+    void testParseRoverLandingPosition_incorrectDirectionChar() {
+        assertEquals(
+                null,
+                InputParser.parseRoverLandingPosition("5 3 Q")
+        );
+    }
+
+    @Test
+    void testParseRoverLandingPosition_incorrectFormatOfPositionX() {
+        assertEquals(
+                null,
+                InputParser.parseRoverLandingPosition("A 3 N")
+        );
+    }
+
+    @Test
+    void testParseRoverLandingPosition_incorrectFormatOfPositionY() {
+        assertEquals(
+                null,
+                InputParser.parseRoverLandingPosition("7 E N")
         );
     }
 
