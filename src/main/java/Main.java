@@ -1,7 +1,5 @@
 import exception.InvalidInputException;
-import model.MissionControl;
-import model.Plateau;
-import model.PlateauSize;
+import model.*;
 import parser.InputParser;
 
 public class Main {
@@ -23,9 +21,14 @@ public class Main {
         MissionControl missionControl = new MissionControl(plateauSize);
 
         // Input: Landing position
+        String inputRoverPosition = "1 2 N";
+        Position position = InputParser.parseRoverLandingPosition(inputRoverPosition);
 
+        if (position == null) {
+            throw new InvalidInputException("Incorrect input format of Rover position");
+        }
 
-
+        Rover rover = new Rover(1, "Rover 1", position);
 
 
         // Input: Rover Instruction
