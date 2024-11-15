@@ -76,7 +76,7 @@ public class Rover implements Movable, Rotatable {
         return "Rover " + name + " ("
                 + id
                 + ") is at the position ("
-                + position.getX() + ", "
+                + position.getX() + " "
                 + position.getY() + " "
                 + position.getFacing() + ")";
     }

@@ -38,7 +38,7 @@ public class MissionControl {
         }
 
         // TODO: hardcoded id and name
-        return new Rover(1, "Rover 1", position);
+        return new Rover(1, "LandRoverDefender", position);
     }
 
     public void commandRoverInstruction(Rover rover, String inputInstruction) {
@@ -60,7 +60,7 @@ public class MissionControl {
                         if (currentPosition.getX() + 1 > this.plateauSize.getWidth()
                                 || currentPosition.getY() + 1 > this.plateauSize.getHeight()
                         ) {
-                            System.out.println("DANGER: " + rover.getName() + " detected on the edge of the Plateau, stop action");
+                            System.out.println("DANGER: " + rover.getName() + " detected danger if move forward.");
                             System.out.println(rover);
                             return;
                         }
@@ -69,7 +69,7 @@ public class MissionControl {
                         if ((this.plateauSize.getWidth() - currentPosition.getX() - 1) < 0
                                 || (this.plateauSize.getHeight() - currentPosition.getY() - 1) < 0
                         ) {
-                            System.out.println("DANGER: " + rover.getName() + " detected on the edge of the Plateau, stop action");
+                            System.out.println("DANGER: " + rover.getName() + " detected danger if move forward.");
                             System.out.println(rover);
                             return;
                         }
