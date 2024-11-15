@@ -72,3 +72,69 @@ For each Rover, the output represents its final position: the coordinates and wh
 
 Rovers move sequentially, this means that if multiple Rovers are being landed then the first Rover needs to finish moving first before the next one can move.
 
+## Example
+
+### Example 1
+Given the following input:
+
+```
+5 5 
+1 2 N
+LMLMLMLMM
+exit
+```
+
+This creates a plateau of size `(5,5)` and lands two rovers on it. The first lands at `(1,2)N` and this one moves `LMLMLMLMM`.
+
+The expected output is:
+
+```
+Wellcome to the Mars Rover!!
+Please enter the Plateau size (eg. "5 5"): 
+5 5
+Please enter the Rover landing position (eg. "1 2 N"): 
+1 2 N
+Rover LandRoverDefender (1) is at the position (1 2 N)
+Please enter the instruction (eg. "LMR") , L: Rotate Left | R: Rotate Right | M: Move Forward , type "exit" to exit
+LMLMLMLMM
+Rover LandRoverDefender (1) is at the position (1 3 N)
+Please enter the instruction (eg. "LMR") , L: Rotate Left | R: Rotate Right | M: Move Forward , type "exit" to exit
+exit
+
+Final position:
+Rover LandRoverDefender (1) is at the position (1 3 N)
+Program End
+```
+
+
+### Example 2
+Given the following input:
+
+```
+5 5 
+3 3 E
+MMRMMRMRRM
+exit
+```
+
+This creates a plateau of size `(5,5)` and lands two rovers on it. The first lands at `(3,3)N` and this one moves `MMRMMRMRRM`.
+
+The expected output is:
+
+```
+Wellcome to the Mars Rover!!
+Please enter the Plateau size (eg. "5 5"): 
+5 5
+Please enter the Rover landing position (eg. "1 2 N"): 
+3 3 E
+Rover LandRoverDefender (1) is at the position (3 3 E)
+Please enter the instruction (eg. "LMR") , L: Rotate Left | R: Rotate Right | M: Move Forward , type "exit" to exit
+MMRMMRMRRM
+Rover LandRoverDefender (1) is at the position (5 1 E)
+Please enter the instruction (eg. "LMR") , L: Rotate Left | R: Rotate Right | M: Move Forward , type "exit" to exit
+exit
+
+Final position:
+Rover LandRoverDefender (1) is at the position (5 1 E)
+Program End
+```
