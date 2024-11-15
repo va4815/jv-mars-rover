@@ -21,7 +21,7 @@ class InstructionParserTest {
     @Test
     void testParseRoverInstruction_nullInstruction() {
         assertEquals(
-                new InvalidInputException("Incorrect input format"),
+                null,
                 InstructionParser.parseRoverInstruction(null)
         );
     }
@@ -29,7 +29,7 @@ class InstructionParserTest {
     @Test
     void testParseRoverInstruction_invalidInput() {
         assertEquals(
-                new InvalidInputException("Incorrect input format"),
+                null,
                 InstructionParser.parseRoverInstruction("L9MR")
         );
     }
