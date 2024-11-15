@@ -4,6 +4,8 @@ import model.*;
 import parser.InputParser;
 import parser.InstructionParser;
 
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -11,16 +13,10 @@ public class Main {
 
         MissionControl missionControl = new MissionControl();
 
-        // Input: Plateau Size
-        String inputPlateauSize = "5 5";
-        Plateau plateau = missionControl.setupPlateau(inputPlateauSize);
+        missionControl.start();
 
-        // Input: Landing position
-        String inputRoverPosition = "1 2 N";
-        Rover rover = missionControl.setupRover(inputRoverPosition);
-
-        // Input: Rover Instruction
-
+        System.out.println("\nFinal position:");
+        System.out.println(missionControl.getRover());
 
         System.out.println("Program End");
     }

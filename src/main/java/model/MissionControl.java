@@ -7,8 +7,13 @@ import exception.InvalidInputException;
 import parser.InputParser;
 import parser.InstructionParser;
 
+import java.util.Scanner;
+
 public class MissionControl {
     private PlateauSize plateauSize;
+    private Plateau plateau;
+    private Rover rover;
+    private static final String EXIT_CMD = "exit";
 
     public MissionControl() {
 
@@ -16,6 +21,14 @@ public class MissionControl {
 
     public PlateauSize getPlateauSize() {
         return plateauSize;
+    }
+
+    public Plateau getPlateau() {
+        return plateau;
+    }
+
+    public Rover getRover() {
+        return rover;
     }
 
     public Plateau setupPlateau(String inputPlateauSize) {
@@ -61,7 +74,6 @@ public class MissionControl {
                                 || currentPosition.getY() + 1 > this.plateauSize.getHeight()
                         ) {
                             System.out.println("DANGER: " + rover.getName() + " detected danger if move forward.");
-                            System.out.println(rover);
                             return;
                         }
                         rover.move(1);
@@ -70,7 +82,6 @@ public class MissionControl {
                                 || (this.plateauSize.getHeight() - currentPosition.getY() - 1) < 0
                         ) {
                             System.out.println("DANGER: " + rover.getName() + " detected danger if move forward.");
-                            System.out.println(rover);
                             return;
                         }
                         rover.move(1);
@@ -81,6 +92,74 @@ public class MissionControl {
 
         }
 
+
+    }
+
+    public void start() {
+        Scanner scanner = new Scanner(System.in);
+
+        askPlateauSize(scanner);
+        askRoverLandingPosition(scanner);
+
+        askRoverInstruction(scanner);
+
+    }
+
+    private void askPlateauSize(Scanner scanner) {
+
+        do {
+            try {
+                System.out.println("Please enter the Plateau size (eg. \"5 5\"): ");
+
+                String input = scanner.nextLine();
+                plateau = setupPlateau(input);
+
+            } catch (NumberFormatException e) {
+                System.err.println("Input should be a number and greater than 0.");
+            } catch (InvalidInputException e) {
+                System.err.println("Incorrect input: " + e.getMessage());
+            }
+        } while (plateau == null);
+
+    }
+
+    private void askRoverLandingPosition(Scanner scanner) {
+        do {
+            try {
+                System.out.println("Please enter the Rover landing position (eg. \"1 2 N\"): ");
+
+                String input = scanner.nextLine();
+                rover = setupRover(input);
+
+            } catch (NumberFormatException e) {
+                System.err.println("Input should be a number and greater than 0.");
+            } catch (InvalidInputException e) {
+                System.err.println("Incorrect input: " + e.getMessage());
+            }
+        } while (rover == null);
+    }
+
+    private void askRoverInstruction(Scanner scanner) {
+
+        String input = "";
+
+        do {
+            try {
+                System.out.println(rover);
+                System.out.println("Please enter the instruction (eg. \"LMR\") , L: Rotate Left | R: Rotate Right | M: Move Forward , type \"exit\" to exit");
+
+                input = scanner.nextLine();
+
+                if (!input.equals(EXIT_CMD)) {
+                    commandRoverInstruction(rover, input);
+                }
+
+            } catch (NumberFormatException e) {
+                System.err.println("Input should be a number and greater than 0.");
+            } catch (InvalidInputException e) {
+                System.err.println("Incorrect input: " + e.getMessage());
+            }
+        } while (!input.equals(EXIT_CMD));
 
     }
 
