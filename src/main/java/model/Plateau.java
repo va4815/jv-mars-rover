@@ -10,9 +10,9 @@ public class Plateau {
     private final int height;
     private Map<Integer, Position> roverPositions;
 
-    public Plateau(int width, int height) {
-        this.width = width;
-        this.height = height;
+    public Plateau(PlateauSize plateauSize) {
+        this.width = plateauSize.getWidth();
+        this.height = plateauSize.getHeight();
         this.roverPositions = new HashMap<>();
     }
 
