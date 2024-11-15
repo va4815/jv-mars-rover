@@ -1,7 +1,9 @@
 package model;
 
+import enumeration.Instruction;
 import exception.InvalidInputException;
 import parser.InputParser;
+import parser.InstructionParser;
 
 public class MissionControl {
     private PlateauSize plateauSize;
@@ -33,7 +35,19 @@ public class MissionControl {
             throw new InvalidInputException("Incorrect input format of Rover position");
         }
 
+        // TODO: hardcoded id and name
         return new Rover(1, "Rover 1", position);
+    }
+
+    public void commandRoverInstruction(Rover rover, String inputInstruction) {
+        Instruction[] instructions = InstructionParser.parseRoverInstruction(inputInstruction);
+
+        if (instructions == null) {
+            throw new InvalidInputException("Incorrect input format of Rover instruction");
+        }
+
+        // TODO: convert Rover to a new position
+        
     }
 
 }
