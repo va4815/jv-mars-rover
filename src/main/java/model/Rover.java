@@ -78,6 +78,6 @@ public class Rover implements Movable, Rotatable {
                 + ") is at the position ("
                 + position.getX() + ", "
                 + position.getY() + " "
-                + position.getFacing() + " )";
+                + position.getFacing() + ")";
     }
 }

@@ -1,6 +1,8 @@
 package model;
 
+import enumeration.Direction;
 import enumeration.Instruction;
+import enumeration.RotateInstruction;
 import exception.InvalidInputException;
 import parser.InputParser;
 import parser.InstructionParser;
@@ -46,8 +48,40 @@ public class MissionControl {
             throw new InvalidInputException("Incorrect input format of Rover instruction");
         }
 
-        // TODO: convert Rover to a new position
-        
+        for (Instruction instruction : instructions) {
+            switch (instruction) {
+                case L -> rover.rotate(RotateInstruction.Left);
+                case R -> rover.rotate(RotateInstruction.Right);
+                case M -> {
+                    Position currentPosition = rover.getPosition();
+                    Direction facing = currentPosition.getFacing();
+
+                    if (facing == Direction.N || facing == Direction.E) {
+                        if (currentPosition.getX() + 1 > this.plateauSize.getWidth()
+                                || currentPosition.getY() + 1 > this.plateauSize.getHeight()
+                        ) {
+                            System.out.println("DANGER: " + rover.getName() + " detected on the edge of the Plateau, stop action");
+                            System.out.println(rover);
+                            return;
+                        }
+                        rover.move(1);
+                    } else if (facing == Direction.W || facing == Direction.S) {
+                        if ((this.plateauSize.getWidth() - currentPosition.getX() - 1) < 0
+                                || (this.plateauSize.getHeight() - currentPosition.getY() - 1) < 0
+                        ) {
+                            System.out.println("DANGER: " + rover.getName() + " detected on the edge of the Plateau, stop action");
+                            System.out.println(rover);
+                            return;
+                        }
+                        rover.move(1);
+                    }
+
+                }
+            }
+
+        }
+
+
     }
 
 }
