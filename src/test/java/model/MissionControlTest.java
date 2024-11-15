@@ -76,7 +76,7 @@ class MissionControlTest {
     }
 
     @Test
-    void testCommandRoverInstruction_TwoInstructionWithOutOfPlateauSize() {
+    void testCommandRoverInstruction_plateauSizeEdgeRight() {
         String inputPlateauSize = "5 5";
         String inputRoverPosition = "1 2 N";
 
@@ -88,7 +88,70 @@ class MissionControlTest {
         Rover expected = new Rover(1, "Rover 1", position);
 
         String input1 = "RMMLM";
-        String input2 = "RMMML";
+        String input2 = "RMMMML";
+        missionControl.commandRoverInstruction(actual, input1);
+        missionControl.commandRoverInstruction(actual, input2);
+
+        assertEquals(expected.getPosition().toString(), actual.getPosition().toString());
+
+    }
+
+    @Test
+    void testCommandRoverInstruction_plateauSizeEdgeBottom() {
+        String inputPlateauSize = "5 5";
+        String inputRoverPosition = "1 2 N";
+
+        MissionControl missionControl = new MissionControl();
+        Plateau plateau = missionControl.setupPlateau(inputPlateauSize);
+        Rover actual = missionControl.setupRover(inputRoverPosition);
+
+        Position position = new Position(3, 0, Direction.S);
+        Rover expected = new Rover(1, "Rover 1", position);
+
+        String input1 = "RMMLM";
+        String input2 = "RRMMMM";
+        missionControl.commandRoverInstruction(actual, input1);
+        missionControl.commandRoverInstruction(actual, input2);
+
+        assertEquals(expected.getPosition().toString(), actual.getPosition().toString());
+
+    }
+
+    @Test
+    void testCommandRoverInstruction_plateauSizeEdgeLeft() {
+        String inputPlateauSize = "5 5";
+        String inputRoverPosition = "1 2 N";
+
+        MissionControl missionControl = new MissionControl();
+        Plateau plateau = missionControl.setupPlateau(inputPlateauSize);
+        Rover actual = missionControl.setupRover(inputRoverPosition);
+
+        Position position = new Position(0, 3, Direction.W);
+        Rover expected = new Rover(1, "Rover 1", position);
+
+        String input1 = "RMMLM";
+        String input2 = "LMMMM";
+        missionControl.commandRoverInstruction(actual, input1);
+        missionControl.commandRoverInstruction(actual, input2);
+
+        assertEquals(expected.getPosition().toString(), actual.getPosition().toString());
+
+    }
+
+    @Test
+    void testCommandRoverInstruction_plateauSizeEdgeTop() {
+        String inputPlateauSize = "5 5";
+        String inputRoverPosition = "1 2 N";
+
+        MissionControl missionControl = new MissionControl();
+        Plateau plateau = missionControl.setupPlateau(inputPlateauSize);
+        Rover actual = missionControl.setupRover(inputRoverPosition);
+
+        Position position = new Position(3, 5, Direction.N);
+        Rover expected = new Rover(1, "Rover 1", position);
+
+        String input1 = "RMMLM";
+        String input2 = "MMMM";
         missionControl.commandRoverInstruction(actual, input1);
         missionControl.commandRoverInstruction(actual, input2);
 
