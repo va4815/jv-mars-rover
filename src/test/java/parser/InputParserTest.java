@@ -3,6 +3,7 @@ package parser;
 import enumeration.Direction;
 import exception.InvalidInputException;
 import model.Plateau;
+import model.PlateauSize;
 import model.Position;
 import org.junit.jupiter.api.Test;
 
@@ -13,8 +14,8 @@ class InputParserTest {
 
     @Test
     void testParsePlateauSize_normalInput() {
-        Plateau expected = new Plateau(5, 5);
-        Plateau actual = InputParser.parsePlateauSize("5 5");
+        PlateauSize expected = new PlateauSize(5, 5);
+        PlateauSize actual = InputParser.parsePlateauSize("5 5");
 
         assertEquals(expected.getWidth(), actual.getWidth());
         assertEquals(expected.getHeight(), actual.getHeight());
@@ -24,7 +25,7 @@ class InputParserTest {
     @Test
     void testParsePlateauSize_nullInput() {
         assertEquals(
-            new InvalidInputException("Incorrect input format"),
+            null,
             InputParser.parsePlateauSize(null)
         );
     }
@@ -32,7 +33,7 @@ class InputParserTest {
     @Test
     void testParsePlateauSize_invalidInput() {
         assertEquals(
-                new InvalidInputException("Incorrect input format"),
+                null,
                 InputParser.parsePlateauSize("5Ad")
         );
     }
