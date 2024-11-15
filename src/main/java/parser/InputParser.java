@@ -25,8 +25,8 @@ public class InputParser {
         }
 
         String[] split = input.split(" ");
-        int width = Integer.parseInt(split[0]);
-        int height = Integer.parseInt(split[1]);
+        int width = Integer.parseInt(split[0]) + 1;
+        int height = Integer.parseInt(split[1]) + 1;
 
         output = new PlateauSize(width, height);
 
